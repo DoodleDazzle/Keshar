@@ -21,7 +21,7 @@ export function Footer() {
               <div>
                 <h2 className="font-display text-3xl">{contact.heading}</h2>
                 <p className="mt-4 max-w-xl text-muted">
-                  Have a project in mind? I'd love to hear about it. Drop me a message and I'll get back to you within 24 hours.
+                  Have a project in mind? I&apos;d love to hear about it. Drop me a message and I&apos;ll get back to you within 24 hours.
                 </p>
               </div>
             </div>
