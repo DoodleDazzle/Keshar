@@ -3,10 +3,9 @@
 import { useState } from "react";
 import { faqs } from "@/content/site";
 import { AccordionItem } from "@/components/AccordionItem";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
 import { Reveal } from "@/components/Reveal";
 import { SectionFrame } from "@/components/SectionFrame";
-import { images, bubbles } from "@/content/site";
+import { bubbles } from "@/content/site";
 
 export function FAQ() {
   const [open, setOpen] = useState(0);
@@ -17,9 +16,17 @@ export function FAQ() {
         <Reveal>
           <div className="relative overflow-hidden rounded-2xl bg-white">
             <div className="aspect-[4/3]">
-              <PlaceholderImage src={images.faqImage} label="FAQ" />
+              <video
+                className="h-full w-full object-cover"
+                src="/videos/faq.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-label="Frequently asked questions"
+              />
             </div>
-            <span className="absolute right-6 top-8 max-w-[160px] rounded-2xl bg-black px-4 py-2 text-sm text-white">
+           <span className="absolute right-6 top-2 max-w-[160px] rounded-2xl bg-black px-4 py-2 text-sm text-white">
               {bubbles.faq}
             </span>
           </div>

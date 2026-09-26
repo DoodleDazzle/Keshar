@@ -54,7 +54,7 @@ export default async function ProjectDetailPage({
               href={project.liveDemo ?? "#"}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex w-fit items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition-transform hover:-translate-y-1"
+              className="pill-cta inline-flex w-fit items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition-transform hover:-translate-y-1"
             >
               Live Demo
               <ArrowUpRight size={17} aria-hidden="true" />
@@ -62,7 +62,7 @@ export default async function ProjectDetailPage({
           </div>
 
           <div className="flex items-center p-6 md:p-10 lg:p-14">
-            <div className="aspect-[4/3] w-full overflow-hidden rounded-[2rem] bg-[#1a1a1a]">
+            <div className="aspect-[4/3] w-full overflow-hidden rounded-[2rem] bg-[var(--card-surface)]">
               <PlaceholderImage src={project.image} label={project.title} className="h-full w-full object-cover" />
             </div>
           </div>
@@ -109,10 +109,10 @@ export default async function ProjectDetailPage({
           {gallery.map((image, index) => (
             <div
               key={`${project.slug}-gallery-${index}`}
-              className={index === 0 ? "aspect-[16/9] md:col-span-2" : "aspect-[4/3]"}
+              className={index === 0 || index === gallery.length - 1 ? "aspect-[16/9] md:col-span-2" : "aspect-[4/3]"}
             >
-              <div className="h-full overflow-hidden rounded-3xl bg-[#1a1a1a]">
-                <PlaceholderImage src={image} label={`${project.title} ${index + 1}`} className="object-cover" />
+              <div className="h-full overflow-hidden rounded-3xl bg-[var(--card-surface)]">
+                <PlaceholderImage src={image} label={`${project.title} ${index + 1}`} className="object-contain" />
               </div>
             </div>
           ))}
@@ -124,7 +124,7 @@ export default async function ProjectDetailPage({
           <h2 className="font-display text-[clamp(3rem,7vw,7rem)] leading-[0.85] tracking-tight text-white">
             More Projects
           </h2>
-          <Link href="/projects" className="hidden rounded-full bg-white px-5 py-3 text-sm text-black md:inline-flex">
+          <Link href="/projects" className="pill-cta hidden rounded-full bg-white px-5 py-3 text-sm text-black md:inline-flex">
             View all Projects
           </Link>
         </div>
@@ -139,7 +139,7 @@ export default async function ProjectDetailPage({
             />
           ))}
         </div>
-        <Link href="/projects" className="mx-auto mt-10 inline-flex rounded-full bg-white px-5 py-3 text-sm text-black md:hidden">
+        <Link href="/projects" className="pill-cta mx-auto mt-10 inline-flex rounded-full bg-white px-5 py-3 text-sm text-black md:hidden">
           View all Projects
         </Link>
       </SectionFrame>

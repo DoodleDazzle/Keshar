@@ -1,9 +1,6 @@
-import { CtaBanner } from "@/components/CtaBanner";
-import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { Marquee } from "@/components/Marquee";
 import { PageHero } from "@/components/PageHero";
-import { Process } from "@/components/Process";
 import { ProjectsGrid } from "@/components/ProjectsGrid";
 import { SectionFrame } from "@/components/SectionFrame";
 import { bubbles, images, projectCapabilities } from "@/content/site";
@@ -32,9 +29,6 @@ export default function ProjectsPage() {
       <SectionFrame>
         <ProjectsGrid />
       </SectionFrame>
-      <Process />
-      <CtaBanner />
-      <FAQ />
       <Footer />
     </main>
   );

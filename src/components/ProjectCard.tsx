@@ -29,16 +29,16 @@ export function ProjectCard({
     >
       <Link
         href={href}
-        className="group relative block overflow-hidden rounded-2xl shadow-lift"
+        className="project-card group relative block overflow-hidden rounded-2xl"
       >
-        <div className="aspect-[4/3] overflow-hidden bg-[#1a1a1a]">
+        <div className="aspect-[4/3] overflow-hidden bg-[var(--card-surface)]">
           <PlaceholderImage
             src={image}
             label={title.toUpperCase()}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           />
         </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5">
+        <div className="project-card-overlay pointer-events-none absolute inset-x-0 bottom-0 p-5">
           <p className="font-display text-2xl text-white">{title}</p>
           {subtitle ? <p className="text-sm text-white/70">{subtitle}</p> : null}
         </div>

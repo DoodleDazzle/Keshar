@@ -10,12 +10,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0a0a0a",
-        surface: "#141414",
+        background: "var(--background)",
+        surface: "var(--surface)",
         border: "rgba(255,255,255,0.12)",
-        foreground: "#ffffff",
-        muted: "#9a9a9a",
-        accentGlow: "#ffffff",
+        foreground: "var(--foreground)",
+        muted: "var(--muted-foreground)",
+        accentGlow: "var(--accent-glow)",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],

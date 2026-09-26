@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
-import { pageAccent, socials, type PageKey } from "@/content/site";
-import { PillButton } from "@/components/PillButton";
-import { SocialIcon } from "@/components/SocialIcon";
+import { LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { pageAccent, type PageKey } from "@/content/site";
+import { ChatOrb } from "@/components/ChatOrb";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/cn";
 
 function routeKey(pathname: string): PageKey {
@@ -14,156 +15,105 @@ function routeKey(pathname: string): PageKey {
   return "home";
 }
 
-function BadgeIcon({ icon }: { icon: "person" | "briefcase" | "laptop" }) {
-  if (icon === "briefcase") {
-    return (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
-        <path
-          d="M8 7V6a2 2 0 012-2h4a2 2 0 012 2v1M4 10h16v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8zM4 13h16"
-          stroke="currentColor"
-          strokeWidth="1.6"
-        />
-      </svg>
-    );
-  }
-  if (icon === "laptop") {
-    return (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
-        <path
-          d="M5 7h14v9H5V7zM3 18h18"
-          stroke="currentColor"
-          strokeWidth="1.6"
-        />
-      </svg>
-    );
-  }
-  return (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
-      <circle cx="12" cy="8" r="3" stroke="currentColor" strokeWidth="1.6" />
-      <path
-        d="M6 19c1.2-3 3.2-4.5 6-4.5S16.8 16 18 19"
-        stroke="currentColor"
-        strokeWidth="1.6"
-      />
-    </svg>
-  );
-}
-
 export function Navbar() {
   const pathname = usePathname();
   const key = routeKey(pathname);
   const accent = pageAccent[key];
+  const reducedMotion = useReducedMotion();
+  const [chatOpen, setChatOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
+
+  useEffect(() => setChatOpen(false), [pathname]);
+
+  const links = [
+    { label: "Home", href: "/", active: key === "home" },
+    { label: "Projects", href: "/projects", active: key === "projects" },
+    { label: "Services", href: "/services", active: key === "services" },
+  ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-black/90">
-      <div className="flex flex-col gap-2 px-4 pt-2 pb-8 md:px-8">
-        <div className="relative flex h-12 items-center justify-between">
-          <div className="flex items-center gap-2 md:gap-3">
-            <PillButton href="#contact" variant="light" dot className="py-2 text-xs md:text-sm">
-              i Want to Chat
-            </PillButton>
-            <div className="hidden items-center gap-2 lg:flex">
-              {socials.map((s) => (
-                <SocialIcon key={s.name} name={s.icon} href={s.href} className="h-8 w-8" />
-              ))}
-            </div>
-          </div>
-
-          <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:block">
-            <div className="flex items-center gap-3 md:gap-4">
-              <Link
-                href="/projects"
-                className={cn(
-                  "text-sm transition-colors duration-300",
-                  key === "projects" ? "font-semibold" : "text-muted"
-                )}
-                style={key === "projects" ? { color: accent.glow } : undefined}
-              >
-                Projects
-              </Link>
-              <span className="text-white/40">•</span>
-              <div className="relative flex h-11 w-11 items-center justify-center">
-                <span
-                  className={cn(
-                    "absolute inset-0 rounded-full border-[1.5px] border-dotted animate-spinSlow",
-                    accent.ring === "dotted" && "border-dotted",
-                    accent.ring === "dashed" && "border-dashed",
-                    accent.ring === "solid" && "border-solid"
-                  )}
-                  style={{
-                    borderColor: accent.glow,
-                  }}
-                />
-                <motion.div
-                  layoutId="nav-badge"
-                  className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white shadow-[0_0_0_1px_rgba(255,255,255,0.10)]"
-                  transition={{ duration: 0.3 }}
-                >
-                  <BadgeIcon icon={accent.icon} />
-                </motion.div>
-              </div>
-              <Link
-                href="/services"
-                className={cn(
-                  "text-sm transition-colors duration-300",
-                  key === "services" ? "font-semibold" : "text-muted"
-                )}
-                style={key === "services" ? { color: accent.glow } : undefined}
-              >
-                Services
-              </Link>
-            </div>
-            <Link
-              href="/"
-              className="absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap text-sm font-medium"
-              style={{ color: accent.glow }}
-            >
-              Home
-            </Link>
-          </div>
-
-          <button
-            type="button"
-            aria-label="Theme"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black"
-          >
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden>
-              <path
-                d="M21 14.5A8.5 8.5 0 1110.5 3 7 7 0 0021 14.5z"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
+    <header className="pointer-events-none sticky top-0 z-50 px-0 pt-4 pb-4">
+      <nav
+        aria-label="Main"
+        className={cn(
+          "pointer-events-auto mx-[5%] grid h-[var(--nav-h)] grid-cols-[1fr_auto_1fr] items-center rounded-full border px-[10px] transition-[background-color,box-shadow,backdrop-filter] duration-200",
+          scrolled && "backdrop-blur-md"
+        )}
+        style={{
+          backgroundColor: scrolled
+            ? "color-mix(in srgb, var(--nav-bg) var(--nav-scrolled-mix), transparent)"
+            : "var(--nav-bg)",
+          borderColor: "var(--nav-border)",
+          boxShadow: scrolled ? "var(--nav-shadow-scrolled)" : "var(--nav-shadow)",
+        }}
+      >
+        <div className="relative h-9 w-9">
+          <ChatOrb accent={accent.glow} onOpenChange={setChatOpen} />
         </div>
 
-        <nav className="flex items-center justify-center gap-4 md:hidden">
-          <Link
-            href="/projects"
-            className={cn(
-              "text-sm",
-              key === "projects" ? "font-semibold" : "text-muted"
-            )}
-            style={key === "projects" ? { color: accent.glow } : undefined}
-          >
-            Projects
-          </Link>
-          <Link href="/" className="text-sm font-medium" style={{ color: accent.glow }}>
-            Home
-          </Link>
-          <Link
-            href="/services"
-            className={cn(
-              "text-sm",
-              key === "services" ? "font-semibold" : "text-muted"
-            )}
-            style={key === "services" ? { color: accent.glow } : undefined}
-          >
-            Services
-          </Link>
-        </nav>
-      </div>
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: -8 }}
+          animate={{ opacity: chatOpen ? 0 : 1, y: 0 }}
+          transition={reducedMotion ? { duration: 0 } : { duration: 0.35, delay: 0.1 }}
+          className="flex items-center justify-center gap-1 max-md:pointer-events-none"
+        >
+          {/* LayoutGroup keeps the shared pill's position tracking scoped to just this nav,
+              so it isn't affected by anything else on the page animating. */}
+          <LayoutGroup id="navbar">
+            {links.map((link, index) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                aria-current={link.active ? "page" : undefined}
+                // scroll={false} stops Next.js from jumping the page to the top on click.
+                // That scroll-reset was racing with the pill's move animation, which is
+                // what caused it to briefly appear in the wrong spot.
+                scroll={false}
+                className={cn(
+                  "relative rounded-full px-2.5 py-2 text-[13px] font-medium outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[var(--accent-glow)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--nav-bg)] sm:px-3.5 sm:text-sm",
+                  link.active ? "text-[var(--accent-glow)]" : "text-[var(--nav-muted)] hover:text-[var(--nav-fg)]"
+                )}
+                style={{ zIndex: 1 }}
+              >
+                {link.active && (
+                  <motion.span
+                    layoutId="nav-active"
+                    // "position" only animates x/y, not width/height — there's nothing to
+                    // remeasure here since every pill is the same size, and skipping the
+                    // size remeasurement removes one more source of timing jitter.
+                    layout="position"
+                    className="absolute inset-0 -z-10 rounded-full"
+                    style={{ backgroundColor: "var(--nav-active-bg)" }}
+                    transition={reducedMotion ? { duration: 0 } : { type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <motion.span
+                  initial={reducedMotion ? false : { opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={reducedMotion ? { duration: 0 } : { delay: 0.15 + index * 0.05, duration: 0.3 }}
+                >
+                  {link.label}
+                </motion.span>
+              </Link>
+            ))}
+          </LayoutGroup>
+        </motion.div>
+
+        <div className="flex justify-end">
+          <ThemeToggle />
+        </div>
+      </nav>
     </header>
   );
 }

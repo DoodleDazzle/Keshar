@@ -56,7 +56,7 @@ export function SocialIcon({
       rel="noreferrer"
       aria-label={name}
       className={cn(
-        "flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-[#1a1a1a] text-white transition-transform duration-150 hover:scale-105",
+        "flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-[var(--card-surface)] text-white transition-transform duration-150 hover:scale-105",
         className
       )}
     >

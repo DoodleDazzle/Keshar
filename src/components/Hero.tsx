@@ -18,11 +18,12 @@ export function Hero() {
           >
             {site.roleLeft}
           </span>
-          <span className="relative h-[clamp(3.5rem,9vw,7.5rem)] w-[clamp(3.5rem,9vw,7.5rem)] overflow-hidden rounded-3xl bg-white">
+          <span className="relative aspect-[714/720] h-[clamp(4.67rem,12vw,10rem)] w-[clamp(4.67rem,12vw,10rem)] overflow-hidden rounded-3xl bg-white">
             <PlaceholderImage
               src={images.heroAvatar}
               video={images.heroAvatarVideo}
               label="AVATAR"
+              className="object-contain"
             />
           </span>
           <span

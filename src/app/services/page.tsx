@@ -1,12 +1,9 @@
 "use client";
 
-import { CtaBanner } from "@/components/CtaBanner";
-import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { Marquee } from "@/components/Marquee";
 import { PageHero } from "@/components/PageHero";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
-import { Process } from "@/components/Process";
 import { Reveal } from "@/components/Reveal";
 import { SectionFrame } from "@/components/SectionFrame";
 import { bubbles, images, serviceQualities, services } from "@/content/site";
@@ -79,9 +76,6 @@ export default function ServicesPage() {
           ))}
         </div>
       </SectionFrame>
-      <Process />
-      <CtaBanner />
-      <FAQ />
       <Footer />
     </main>
   );

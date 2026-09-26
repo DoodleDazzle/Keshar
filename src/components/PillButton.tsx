@@ -24,10 +24,10 @@ export function PillButton({
   type?: "button" | "submit";
 }) {
   const classes = cn(
-    "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-150 will-change-transform hover:scale-[1.03] hover:shadow-lift",
+    "pill-cta inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-150 will-change-transform hover:scale-[1.03] hover:shadow-lift",
     variant === "light"
       ? "bg-white text-black"
-      : "border border-white/15 bg-[#141414] text-white",
+      : "border border-white/15 bg-surface text-white",
     className
   );
 

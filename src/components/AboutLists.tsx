@@ -1,7 +1,7 @@
 import { StackIcon } from '@/components/StackIcon'
 
-const stack = [['Framer', 'Website Builder', 'framer'], ['Figma', 'Graphics Design', 'figma'], ['Photoshop', 'Image Editing', 'photoshop'], ['Contra', 'Freelance Jobs', 'contra']] as const
-const experience = ['Senior Web Designer · Google · 2025 – Now', 'Creative Designer · Base · 2024 – 2025', 'Senior Brand Designer · Sero · 2020 – 2024']
+const stack = [['Figma', 'Interface Design', 'figma'], ['Photoshop', 'Image Editing', 'photoshop'], ['Illustrator', 'Vector Graphics', 'contra'], ['Photopea', 'Image Editing', 'photoshop']] as const
+const experience = ['UI/UX Designer (Intern) · Tupple Apps · Dec 2024 – Jun 2025', 'Graphic Designer · SVNM Hospital · Jul 2025 – Nov 2025', 'Graphic Designer · Hunani Infotech · Dec 2025 – Present']
 
 export function AboutLists({ side }: { side: 'stack' | 'experience' }) {
   if (side === 'stack') return <div className="about-list"><h3>My Stack</h3>{stack.map(([name, subtitle, brand]) => <p className="stack-item" key={name}><StackIcon brand={brand} /><span><b>{name}</b><small>{subtitle}</small></span></p>)}</div>

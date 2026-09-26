@@ -59,8 +59,8 @@ export const site = {
   city: "Miami",
   product: "products",
   outcome: "ship faster and convert better",
-  email: "contact@ace.com",
-  phone: "+1 (555) 123-4567",
+  email: "keshartamakuwala4@gmail.com",
+  phone: "",
   madeIn: "Next.js",
   copyright: "© 2026 Keshar. All rights reserved.",
 };
@@ -90,40 +90,37 @@ export const stats = [
 
 export const aboutStatsLeft = [
   { value: "13+", label: "Projects Completed" },
-  { value: "10+", label: "Years of Experience" },
-  { value: "5", label: "Star Client Reviews" },
+  { value: "1+", label: "Years of Design Experience" },
+  { value: "20+", label: "UI Screens Designed" },
 ];
 
-export const aboutStatsRight = [
-  { value: "98%", label: "Client Retention Rate" },
-  { value: "60+", label: "Happy Customers" },
-  { value: "5+", label: "Industries Served" },
-];
+export const aboutStatsRight = [{ value: "5+", label: "Industries Explored" }];
 
 export const stack = [
-  { name: "Figma", subtitle: "Interface Design" },
-  { name: "Framer", subtitle: "Website Builder" },
-  { name: "Photoshop", subtitle: "Image Editing" },
-  { name: "Contra", subtitle: "Freelance Jobs" },
-  { name: "Principle", subtitle: "Motion Design" },
-  { name: "Webflow", subtitle: "No-code Build" },
+  { name: "FIGMA", subtitle: "Interface Design" },
+  { name: "PHOTOSHOP", subtitle: "Image Editing" },
+  { name: "ILLUSTRATOR", subtitle: "Vector Design" },
+  { name: "PHOTOPEA", subtitle: "Creative Editing" },
 ];
 
 export const experience = [
   {
-    title: "Senior UI Designer",
-    company: "Google",
-    year: "2025 - Now",
+    title: "UI UX Designer",
+    company: "Tupple Apps",
+    year: "December 2024 – June 2025",
+    role: "Internship",
   },
   {
-    title: "Product Designer",
-    company: "Bose",
-    year: "2024 - 2025",
+    title: "Graphic Designer",
+    company: "SVNM Hospital",
+    year: "July 2025 – November 2025",
+    role: "Job",
   },
   {
-    title: "Brand Designer",
-    company: "Sero",
-    year: "2020 - 2024",
+    title: "Graphic Designer",
+    company: "Hunani Infotech",
+    year: "December 2025 – Present",
+    role: "Job",
   },
 ];
 
@@ -138,19 +135,18 @@ export const images = {
   testimonialAvatar: "",
   projects: [
     {
-      slug: "project-one",
-      title: "Habitate",
+      slug: "rare-time-ny",
+      title: "Rare Time NY",
       subtitle: "Website Design",
       image: "/images/projects/rolex.jpeg",
       description:
-        "Habitate is a warm, considered digital home for a modern interior brand, balancing strong editorial moments with a frictionless browsing experience.",
-      liveDemo: "https://habitate.vercel.app",
-      services: "Strategy, UX/UI Design, Web Development",
-      client: "Habitate",
-      duration: "6 Weeks",
-      date: "March 2025",
+        "For the Rare Time e-commerce website, the client provided references that we used as a starting point for the redesign. We first identified the key information and sections that needed to be on the homepage, then gradually built the complete website in Figma, including the content and overall visual direction. After presenting the designs, we incorporated the client’s feedback and made the required changes until the final website was approved.",
+      liveDemo: "https://www.figma.com/proto/fsZ2PckGrGwOfHDgZw0B1J/Rare-Time-NY-Website-Mockup?node-id=71-72&viewport=2534%2C153%2C0.2&t=IsI6gfA5MMLnnHR3-1&scaling=scale-down-width&content-scaling=fixed&page-id=71%3A71",
+      services: "UX/UI Design, Web Development",
+      client: "Product Designer",
+      duration: "One Week",
+      date: "March 2026",
       gallery: [
-        "/images/projects/rolex.jpeg",
         "/images/projects/rolex-1.jpeg",
         "/images/projects/rolex-2.jpeg",
         "/images/projects/rolex-3.jpeg",
@@ -165,62 +161,76 @@ export const images = {
       description:
         "Air Fold is a focused ecommerce experience that makes discovering, comparing, and purchasing premium products feel effortless.",
       liveDemo: "https://getairfold.com/",
-      services: "Strategy, UX/UI Design, Web Development",
-      client: "Air Fold",
-      duration: "8 Weeks",
-      date: "May 2025",
+      services: "UX/UI Design, Web Development",
+      client: "Product Designer",
+      duration: "One Week",
+      date: "March 2026",
       gallery: [
         "/images/projects/air-fold-1.jpg",
         "/images/projects/air-fold-2.jpg",
         "/images/projects/air-fold-3.jpg",
         "/images/projects/air-fold-3.jpg",
-        "",
       ],
     },
     {
-      slug: "project-three",
-      title: "Shipit",
+      slug: "halos-edge",
+      title: "Halos Edge",
       subtitle: "Website Design",
-      image: "/images/projects/watch.jpeg",
+      image: "/images/projects/halos-edge/halos-edge-1.png",
       description:
-        "Shipit is a clear, confident logistics platform designed to make complex movement and fulfillment feel simple.",
-      liveDemo: "https://shipit.vercel.app",
-      services: "Product Strategy, UX/UI Design, Prototyping",
-      client: "Shipit",
-      duration: "10 Weeks",
-      date: "January 2025",
+        "This project was for an energy drink brand like Redbull looking for a cool, bold, and colorful website. I started by understanding the client’s direction and collecting visual references for the overall style, colors, imagery, and layout. Using these references as inspiration, I explored different ideas and developed the complete website design in Figma, including the homepage, sections, visual hierarchy, typography, colors, and interactive elements.",
+      liveDemo: "https://www.figma.com/proto/T6rFanEegaY40I7wHGJlK1/Portfolio-Work?node-id=2-5175&viewport=38%2C144%2C0.05&t=2F72joGuBREvKyZ6-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
+      services: "UX/UI Design, Web Development",
+      client: "Product Designer",
+      duration: "One Week",
+      date: "March 2026",
       gallery: [
-        "/images/projects/watch-1.jpg",
-        "/images/projects/watch-2.jpg",
-        "/images/projects/watch-3.jpg",
-        "/images/projects/watch-3.jpg",
+        "/images/projects/halos-edge/halos-edge-2.png",
+        "/images/projects/halos-edge/halos-edge-3.png",
+        "/images/projects/halos-edge/halos-edge-4.png",
         "",
       ],
     },
     {
-      slug: "project-four",
-      title: "Hifi Store",
+      slug: "living-space",
+      title: "Living & Space",
       subtitle: "Web Design",
       image: "/images/projects/livingspace.jpeg",
       description:
-        "Hifi Store is a refined shopping experience for people who care deeply about sound, craft, and detail.",
-      liveDemo: "https://hifi-store.vercel.app",
-      services: "Brand Direction, UX/UI Design, Web Development",
-      client: "Hifi Store",
-      duration: "7 Weeks",
-      date: "October 2024",
+        "Living & Space is a furniture product website where the client provided the color theme and product images, and I turned them into a complete website design in Figma. It was an urgent project, so I completed the entire website in just half a day on Holi — while everyone was out playing Holi, I was busy designing the website.",
+      liveDemo: "https://www.figma.com/proto/1yagwzXq4UOdfRvRrxp9Wh/Living---Space-Website-Mockup?node-id=215-35&viewport=347%2C254%2C0.03&t=F6Ge2qEOJyGanfbn-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
+      services: "UX/UI Design, Web Development",
+      client: "Product Designer",
+      duration: "One Week",
+      date: "March 2026",
       gallery: [
         "/images/projects/livingspace-1.jpg",
         "/images/projects/livingspace-2.jpg",
         "/images/projects/livingspace-3.jpg",
         "/images/projects/livingspace-4.jpg",
+      ],
+    },
+    {
+      slug: "strategic-ai-automation-leadership",
+      title: "Strategic AI & Automation Leadership",
+      subtitle: "Website Design",
+      image: "/images/projects/strategic-ai/strategic-ai-1.png",
+      description:
+        "This was a personal portfolio website where the client already had an existing website with a similar style and color theme. I kept the same color direction and redesigned the complete website in Figma, giving it a cleaner and more polished look while staying consistent with the existing brand.",
+      liveDemo: "https://www.mbjess.com/",
+      services: "UX/UI Design, Web Development",
+      client: "Product Designer",
+      duration: "One Week",
+      date: "March 2026",
+      gallery: [
+        "/images/projects/strategic-ai/strategic-ai-2.png",
+        "/images/projects/strategic-ai/strategic-ai-3.png",
+        "",
         "",
       ],
     },
   ],
   services: [
-    { image: "" },
-    { image: "" },
     { image: "" },
     { image: "" },
   ],
@@ -232,51 +242,30 @@ export const services = [
     title: "WEB DESIGN",
     tagline: "Design That Converts",
     description:
-      "I'll build you a beautiful website that's fast, easy to use, and turns visitors into customers.",
+      "I design polished, conversion-focused websites that communicate your value clearly and feel effortless to use.",
     tags: [
       "Custom Websites",
-      "Website Redesign",
-      "Template Customization",
       "Landing Pages",
+      "Website Redesign",
+      "Responsive Layouts",
     ],
     image: images.services[0].image,
+    icon: "/images/icons/web-design.png",
   },
   {
     id: "02",
-    title: "BRANDING",
-    tagline: "Build a Visual Voice",
-    description:
-      "I'll design a unique brand identity that makes you memorable and connects with your audience.",
-    tags: ["Logo Design", "Brand Guidelines", "Color & Typography", "Business Cards"],
-    image: images.services[1].image,
-  },
-  {
-    id: "03",
-    title: "PRODUCT DESIGN",
-    tagline: "Design for Impact",
-    description:
-      "I'll design intuitive digital products that users love and that solve real problems for your customers.",
-    tags: [
-      "Mobile App Design",
-      "Dashboard Design",
-      "User Interface Design",
-      "Prototype Development",
-    ],
-    image: images.services[2].image,
-  },
-  {
-    id: "04",
-    title: "GRAPHICS DESIGN",
+    title: "GRAPHIC DESIGN",
     tagline: "Designs That Communicate",
     description:
-      "I'll design eye-catching visuals for your marketing, social media, and print materials that get noticed.",
+      "I create visual materials that elevate your brand, from marketing assets and presentations to polished creative work.",
     tags: [
-      "Social Media Graphics",
+      "Logo Design",
       "Marketing Materials",
-      "Illustrations",
       "Print Design",
+      "Image Editing",
     ],
-    image: images.services[3].image,
+    image: images.services[1].image,
+    icon: "/images/icons/graphics-design.png",
   },
 ];
 
@@ -355,17 +344,25 @@ export const bubbles = {
   faq: "Frequently Answered Questions",
 };
 
-export const cta = {
-  heading: "Ready to Get Started?",
-  body: "Tell me about your project and let's create something amazing together. I'll respond within 24 hours.",
-  button: "I'm Ready to Start",
-};
-
 export const contact = {
   eyebrow: "CONTACT ME",
   heading: "Let's Work Together",
-  body: "Have a project in mind? I'd love to hear about it. Drop me a message and I'll get back to you within 24 hours.",
-  schedulePrompt:
-    "Prefer to schedule a call instead? Book a free 30-minute consultation and let's discuss your project.",
-  scheduleCta: "Let's Set Up a Time",
+  body: "",
+  schedulePrompt: "",
+  scheduleCta: "Email Me",
 };
+
+export const graphicWorks = [
+  {
+    src: "/images/graphic-works/graphic-catalogue.png",
+    title: "Graphic Catalogue",
+  },
+  {
+    src: "/images/graphic-works/karen-biggers-cover.png",
+    title: "Karen Biggers Cover",
+  },
+  {
+    src: "/images/graphic-works/karen-biggers-logos.png",
+    title: "Karen Biggers Logos",
+  },
+];

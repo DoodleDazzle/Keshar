@@ -6,12 +6,14 @@ export function PlaceholderImage({
   src,
   video,
   alt,
+  showLabel = true,
 }: {
   label?: string;
   className?: string;
   src?: string;
   video?: string;
   alt?: string;
+  showLabel?: boolean;
 }) {
   const mediaSrc = video ?? src;
 
@@ -45,12 +47,12 @@ export function PlaceholderImage({
   return (
     <div
       className={cn(
-        "flex h-full w-full items-center justify-center bg-[#1a1a1a] text-xs font-medium tracking-[0.2em] text-muted",
+        "flex h-full w-full items-center justify-center bg-[var(--card-surface)] text-xs font-medium tracking-[0.2em] text-muted",
         className
       )}
       aria-label={label}
     >
-      {label}
+      {showLabel && <span>{label}</span>}
     </div>
   );
 }

@@ -7,6 +7,47 @@
   --background: #0a0a0a;
   --foreground: #ffffff;
   --accent-glow: #ffffff;
+  --muted-foreground: #9a9a9a;
+  --surface: #141414;
+  --card-surface: #1a1a1a;
+  --line-color: rgba(255, 255, 255, 0.15);
+  --nav-h: 56px;
+  --nav-total: calc(var(--nav-h) + 32px);
+  --nav-bg: #000000;
+  --nav-fg: #ffffff;
+  --nav-muted: rgba(255, 255, 255, 0.62);
+  --nav-border: rgba(255, 255, 255, 0.10);
+  --nav-active-bg: rgba(255, 255, 255, 0.08);
+  --nav-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --nav-shadow-scrolled: 0 14px 36px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --nav-scrolled-mix: 88%;
+  --project-card-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --project-card-overlay: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+:root.theme-light {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --muted-foreground: #666666;
+  --surface: #f4f4f4;
+  --card-surface: #f4f4f4;
+  --line-color: rgba(0, 0, 0, 0.15);
+  --nav-bg: #ffffff;
+  --nav-fg: #0a0a0a;
+  --nav-muted: rgba(0, 0, 0, 0.60);
+  --nav-border: rgba(0, 0, 0, 0.10);
+  --nav-active-bg: rgba(0, 0, 0, 0.06);
+  --nav-shadow: none;
+  --nav-shadow-scrolled: none;
+  --nav-scrolled-mix: 100%;
+  --project-card-shadow: none;
+  --project-card-overlay: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(255, 255, 255, 0.72) 42%,
+    rgba(255, 255, 255, 0.18) 72%,
+    transparent 100%
+  );
 }
 
 html {
@@ -17,6 +58,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-body), sans-serif;
+  transition: color 240ms ease, background-color 240ms ease;
 }
 
 ::selection {
@@ -38,7 +80,66 @@ body {
   animation-play-state: paused;
 }
 
-.about-section { --fg:var(--foreground); --muted:rgba(255,255,255,.6); --card-bg:#f7f7f7; --line:rgba(255,255,255,.1); --panel:var(--background); background:var(--background); color:var(--fg); font-family:'DM Sans',sans-serif; }
+/* Keep the existing utility-driven layout responsive to the persisted theme. */
+.theme-light .bg-black,
+.theme-light [class*="bg-black/"] {
+  background-color: var(--background) !important;
+}
+
+.theme-light .bg-surface,
+.theme-light [class*="bg-[#1a1a1a]"],
+.theme-light [class*="bg-[#141414]"],
+.theme-light [class*="bg-[#101010]"] {
+  background-color: var(--card-surface) !important;
+}
+
+.theme-light header nav {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.theme-light [class*="bg-white/"] {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.theme-light .text-white,
+.theme-light [class*="text-white/"] {
+  color: var(--foreground) !important;
+}
+
+.theme-light .pill-cta,
+.theme-light .bg-white.text-black {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+}
+
+.theme-light .border-white,
+.theme-light [class*="border-white/"] {
+  border-color: var(--line-color) !important;
+}
+
+.theme-light [class*="bg-gradient-to-"] {
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.92), transparent) !important;
+}
+
+.project-card {
+  box-shadow: var(--project-card-shadow);
+}
+
+.project-card-overlay {
+  background-image: var(--project-card-overlay);
+}
+
+.theme-light .project-card-overlay {
+  padding-top: 4.5rem;
+}
+
+.theme-light .theme-toggle {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.about-section { --fg:var(--foreground); --muted:var(--muted-foreground); --card-bg:var(--card-surface); --line:var(--line-color); --panel:var(--background); background:var(--background); color:var(--fg); font-family:'DM Sans',sans-serif; }
 .about-lottie { aspect-ratio:1 / 1; border-radius:50%; overflow:hidden; display:inline-flex; align-items:center; justify-content:center; background:var(--panel); border:4px solid var(--fg); box-shadow:0 8px 30px rgba(0,0,0,.12); }
 .about-section { border-bottom:1px solid var(--line);position:relative; }
 .about-heading { font:900 clamp(4rem,10vw,9rem)/.8 'Barlow Condensed';text-transform:uppercase;letter-spacing:-.04em;text-align:center;margin:0;padding:72px 0 58px; }
@@ -54,9 +155,10 @@ body {
 .stat strong { font:700 50px 'Barlow Condensed'; }
 .stat span { color:var(--muted);font-size:17px;font-weight:600; }
 .about-image { position:relative;padding:30px;display:grid;place-items:start center;min-width:0; }
-.about-lottie-sticky { align-self:stretch;position:sticky;top:108px;height:max-content; }
-.about-lottie-card { position:relative; width:min(100%,460px); aspect-ratio:1; display:grid;place-items:center; overflow:hidden; border-radius:36px; background:var(--card-bg); }
-.about-lottie { width:100%; aspect-ratio:1/1; display:grid;place-items:center; overflow:hidden; border-radius:36px; border:1px solid var(--line); background:transparent; }
+.about-lottie-sticky { align-self:stretch;position:sticky;top:calc(var(--nav-total) + 20px);height:max-content; }
+.about-lottie-card { position:relative; width:min(100%,460px); aspect-ratio:4/3; display:grid;place-items:center; overflow:hidden; border-radius:36px; background:var(--card-bg); }
+.about-lottie { width:100%; aspect-ratio:4/3; display:grid;place-items:center; overflow:hidden; border-radius:36px; border:1px solid var(--line); background:transparent; }
+.character-video { width:100%; height:100%; display:block; object-fit:cover; }
 .about-lottie > div { width:100%;height:100%;display:block;transform:scale(1.45);transform-origin:center; }
 .about-lottie svg { width:100%;height:100%;display:block; }
 .about-image span { position:absolute;top:48px;right:8%;background:var(--panel);padding:16px 24px;border-radius:40px;font:600 24px 'Barlow Condensed';z-index:1; }
@@ -74,7 +176,7 @@ body {
 .stack-icon-photoshop { background:#0b6fae;color:#8ed9ff;font:700 15px 'DM Sans'; }
 .stack-icon-contra { background:#f5c542;color:#111; }
 @media(max-width:1199px){.about-layout{grid-template-columns:1fr 1.25fr 1fr}}
-@media(max-width:1000px){.about-lottie{width:clamp(180px,55vw,280px);aspect-ratio:1 / 1;border-radius:50%}.about-heading{font-size:5rem;padding:52px 0 38px}.about-layout{grid-template-columns:1fr}.about-side-left,.about-side-right{border:0}.about-lottie-sticky{position:relative;top:auto}.about-image{order:-1;padding:20px}.about-lottie-card{width:100%;border-radius:24px}.about-lottie{width:100%;border-radius:24px}.about-image span{font-size:18px;top:32px;right:8%}.about-list{padding:0 18px}.stats{display:grid;grid-template-columns:1fr 1fr}.stat{min-height:150px;padding:25px 18px}.stat strong{font-size:40px}.stat span{font-size:13px}.right .stat{border-left:0}}
+@media(max-width:1000px){.about-lottie{width:100%;aspect-ratio:4 / 3;border-radius:24px}.about-heading{font-size:5rem;padding:52px 0 38px}.about-layout{grid-template-columns:1fr}.about-side-left,.about-side-right{border:0}.about-lottie-sticky{position:relative;top:auto}.about-image{order:-1;padding:20px}.about-lottie-card{width:100%;border-radius:24px}.about-lottie{width:100%;border-radius:24px}.about-image span{font-size:18px;top:32px;right:8%}.about-list{padding:0 18px}.stats{display:grid;grid-template-columns:1fr 1fr}.stat{min-height:150px;padding:25px 18px}.stat strong{font-size:40px}.stat span{font-size:13px}.right .stat{border-left:0}}
 @media(max-width:767px){.about-heading{font-size:clamp(3.75rem,17vw,6rem);padding-block:58px 38px}.about-layout{grid-template-columns:1fr}.about-image{order:-1}.about-side{display:block}.stats{grid-template-columns:repeat(3,1fr)}.about-list h3{line-height:1.5}}
 @media(max-width:360px){.section-heading h2,.about-heading{font-size:clamp(3.25rem,17vw,4.5rem)}}
 
