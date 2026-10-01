@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { pageAccent, type PageKey } from "@/content/site";
 import { ChatOrb } from "@/components/ChatOrb";
@@ -21,6 +22,7 @@ export function Navbar() {
   const accent = pageAccent[key];
   const reducedMotion = useReducedMotion();
   const [chatOpen, setChatOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navItemsRef = useRef<HTMLDivElement>(null);
   const navLinksRef = useRef<Array<HTMLAnchorElement | null>>([]);
@@ -39,7 +41,10 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => setChatOpen(false), [pathname]);
+  useEffect(() => {
+    setChatOpen(false);
+    setMenuOpen(false);
+  }, [pathname]);
 
   useLayoutEffect(() => {
     const container = navItemsRef.current;
@@ -69,11 +74,11 @@ export function Navbar() {
   }, [key]);
 
   return (
-    <header className="pointer-events-none sticky top-0 z-50 px-0 pt-4 pb-4">
+    <header className="pointer-events-none sticky top-0 z-50 px-0 pt-6 pb-4 md:pt-4">
       <nav
         aria-label="Main"
         className={cn(
-          "pointer-events-auto mx-[5%] grid h-[var(--nav-h)] grid-cols-[1fr_auto_1fr] items-center rounded-full border px-[10px] transition-[background-color,box-shadow,backdrop-filter] duration-200",
+          "pointer-events-auto mx-[4%] grid min-h-[var(--nav-h)] grid-cols-[1fr_auto] items-center rounded-[24px] border px-[10px] transition-[background-color,box-shadow,backdrop-filter] duration-200 md:mx-[5%] md:h-[var(--nav-h)] md:grid-cols-[1fr_auto_1fr] md:rounded-full",
           scrolled && "backdrop-blur-md"
         )}
         style={{
@@ -93,7 +98,7 @@ export function Navbar() {
           initial={reducedMotion ? false : { opacity: 0, y: -8 }}
           animate={{ opacity: chatOpen ? 0 : 1, y: 0 }}
           transition={reducedMotion ? { duration: 0 } : { duration: 0.35, delay: 0.1 }}
-          className="relative flex items-center justify-center gap-1 max-md:pointer-events-none"
+          className="relative hidden items-center justify-center gap-1 md:flex"
         >
           {indicator && (
             <motion.span
@@ -135,9 +140,43 @@ export function Navbar() {
           ))}
         </motion.div>
 
-        <div className="flex justify-end">
+        <div className="flex items-center justify-end gap-2">
           <ThemeToggle />
+          <button
+            type="button"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--nav-border)] text-[var(--nav-fg)] outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-glow)] md:hidden"
+          >
+            {menuOpen ? <X size={17} aria-hidden="true" /> : <Menu size={17} aria-hidden="true" />}
+          </button>
         </div>
+
+        {menuOpen && (
+          <div
+            id="mobile-navigation"
+            className="col-span-2 mt-2 grid gap-1 border-t border-[var(--nav-border)] pt-2 md:hidden"
+          >
+            {links.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                aria-current={link.active ? "page" : undefined}
+                scroll={false}
+                className={cn(
+                  "rounded-xl px-4 py-3 text-sm font-medium transition-colors",
+                  link.active
+                    ? "bg-[var(--nav-active-bg)] text-[var(--accent-glow)]"
+                    : "text-[var(--nav-muted)] hover:bg-[var(--nav-active-bg)] hover:text-[var(--nav-fg)]"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        )}
       </nav>
     </header>
   );

@@ -24,8 +24,8 @@ export function PageHero({
       >
         <Reveal className="min-w-0">
           <h1
-            className="min-w-0 whitespace-nowrap font-display leading-[0.85] tracking-tight text-white"
-            style={{ fontSize: "clamp(2.4rem, 6vw, 5.5rem)" }}
+            className="min-w-0 break-words font-display leading-[0.9] tracking-tight text-white"
+            style={{ fontSize: "clamp(2rem, 10vw, 5.5rem)" }}
           >
             {title}
           </h1>
@@ -41,8 +41,8 @@ export function PageHero({
             </div>
             <span
               className={cn(
-                "absolute top-6 max-w-[200px] rounded-2xl bg-black/90 px-4 py-2 text-sm text-white shadow-lg backdrop-blur-sm",
-                reverse ? "right-0" : "left-6"
+                "absolute bottom-3 w-fit max-w-[min(65%,13rem)] rounded-2xl bg-black/90 px-3 py-2 text-xs text-white shadow-lg backdrop-blur-sm sm:text-[13px] lg:bottom-auto lg:top-6 lg:max-w-[200px] lg:px-4 lg:py-2 lg:text-sm",
+                reverse ? "right-3 lg:right-0" : "left-3 lg:left-6"
               )}
             >
               {bubble}

@@ -50,7 +50,7 @@ export function SectionFrame({
           <Star />
         </span>
       </div>
-      <div className={cn("relative z-10 px-[7vw] py-10 md:py-14", innerClassName)}>
+      <div className={cn("relative z-10 px-[5vw] py-8 sm:px-[6vw] sm:py-10 lg:px-[7vw] md:py-14", innerClassName)}>
         {children}
       </div>
     </section>
