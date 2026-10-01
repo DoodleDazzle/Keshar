@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { services } from "@/content/site";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
 import { Reveal } from "@/components/Reveal";
 import { SectionFrame } from "@/components/SectionFrame";
 import { AccordionItem } from "@/components/AccordionItem";
