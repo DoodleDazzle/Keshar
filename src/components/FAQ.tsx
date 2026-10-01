@@ -8,7 +8,7 @@ import { SectionFrame } from "@/components/SectionFrame";
 import { bubbles } from "@/content/site";
 
 export function FAQ() {
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(-1);
 
   return (
     <SectionFrame>

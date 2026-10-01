@@ -8,7 +8,7 @@ import { SectionFrame } from "@/components/SectionFrame";
 import { AccordionItem } from "@/components/AccordionItem";
 
 export function ServicesTeaser() {
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(-1);
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
