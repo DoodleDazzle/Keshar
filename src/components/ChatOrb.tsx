@@ -79,7 +79,7 @@ export function ChatOrb({
           animate={{ opacity: open ? 1 : 0, x: open ? 0 : -6 }}
           transition={reducedMotion ? { duration: 0 } : { delay: open ? 0.06 : 0, duration: 0.16 }}
         >
-          i Want to Chat
+          I Want to Chat
         </motion.span>
         <motion.span
           className="h-2 w-2 shrink-0 rounded-full"

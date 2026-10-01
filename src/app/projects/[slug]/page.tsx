@@ -112,7 +112,17 @@ export default async function ProjectDetailPage({
               className={index === 0 || index === gallery.length - 1 ? "aspect-[16/9] md:col-span-2" : "aspect-[4/3]"}
             >
               <div className="h-full overflow-hidden rounded-3xl bg-[var(--card-surface)]">
-                <PlaceholderImage src={image} label={`${project.title} ${index + 1}`} className="object-contain" />
+                <PlaceholderImage
+                  src={image}
+                  label={`${project.title} ${index + 1}`}
+                  className={
+                    project.slug === "rare-time-ny" && index === gallery.length - 1
+                      ? "!object-contain scale-[1.35]"
+                      : project.slug === "rare-time-ny" && index === 0
+                        ? "!object-contain"
+                      : "object-contain"
+                  }
+                />
               </div>
             </div>
           ))}

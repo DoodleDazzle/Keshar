@@ -13,7 +13,7 @@ export function ProjectsPreview() {
     <SectionFrame>
       <Reveal className="mb-6 flex items-end justify-between gap-4">
         <p className="font-display text-4xl text-white md:text-6xl">PROJECTS</p>
-        <Link href="/projects" className="text-sm text-muted hover:text-white">
+        <Link href="/projects" className="text-sm text-muted hover:text-[var(--foreground)]">
           View all projects →
         </Link>
       </Reveal>

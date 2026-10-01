@@ -15,6 +15,7 @@ function Stat({ n, t }: { n: string; t: string }) { return <div className="stat"
 export function About() {
   return (
     <section id="about" className="about-section section-grid">
+      <div className="about-section-boundary" aria-hidden="true" />
       <h2 className="about-heading">About Me</h2>
       <div className="about-layout">
         <div className="about-side about-side-left"><div className="stats"><Stat n="13+" t="Projects Completed" /><Stat n="1+" t="Years of Design Experience" /><Stat n="20+" t="UI Screens Designed" /></div><AboutLists side="stack" /></div>

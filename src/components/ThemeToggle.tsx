@@ -16,7 +16,7 @@ export function ThemeToggle() {
   const toggle = () => {
     const next = !light;
     document.documentElement.classList.toggle("theme-light", next);
-    localStorage.setItem("theme", next ? "light" : "dark");
+    localStorage.setItem("theme-v2", next ? "light" : "dark");
     setLight(next);
   };
 

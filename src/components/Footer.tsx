@@ -5,8 +5,6 @@ import { PillButton } from "@/components/PillButton";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
 import { SectionFrame } from "@/components/SectionFrame";
 import { Reveal } from "@/components/Reveal";
-import { SocialIcon } from "@/components/SocialIcon";
-import { socials } from "@/content/site";
 
 export function Footer() {
   return (
@@ -58,11 +56,6 @@ export function Footer() {
             <a href={`mailto:${site.email}`} className="mt-4 inline-block text-white">
               {site.email}
             </a>
-            <div className="mt-5 flex gap-2" aria-label="Social links">
-              {socials.map((social) => (
-                <SocialIcon key={social.name} name={social.icon} href={social.href} />
-              ))}
-            </div>
           </div>
         </div>
       </SectionFrame>

@@ -3,6 +3,7 @@ import { Archivo_Black, Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
 import { AccentSetter } from "@/components/AccentSetter";
 import { Navbar } from "@/components/Navbar";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const display = Archivo_Black({
   weight: "400",
@@ -42,18 +43,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="theme-light" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('theme-light')}catch(e){}})();",
+              "(function(){try{if(localStorage.getItem('theme-v2')==='dark')document.documentElement.classList.remove('theme-light')}catch(e){}var blocked=['copy','cut','contextmenu','dragstart'];blocked.forEach(function(type){document.addEventListener(type,function(event){var target=event.target;if(target instanceof Element&&target.closest('input,textarea,[contenteditable=\"true\"]'))return;event.preventDefault()},true)})})();",
           }}
         />
       </head>
       <body
         className={`${display.variable} ${body.variable} ${condensed.variable} bg-background font-body text-foreground antialiased`}
       >
+        <SmoothScroll />
         <AccentSetter />
         <Navbar />
         {children}

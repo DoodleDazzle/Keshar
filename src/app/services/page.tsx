@@ -1,5 +1,7 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
+
 import { Footer } from "@/components/Footer";
 import { Marquee } from "@/components/Marquee";
 import { PageHero } from "@/components/PageHero";
@@ -10,6 +12,8 @@ import { bubbles, images, serviceQualities, services } from "@/content/site";
 import { cn } from "@/lib/cn";
 
 export default function ServicesPage() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <main>
       <PageHero
@@ -33,47 +37,105 @@ export default function ServicesPage() {
       </div>
       <SectionFrame>
         <div className="space-y-16">
-          {services.map((s, i) => (
-            <Reveal key={s.id} delay={i * 0.08}>
-              <article
-                className={cn(
-                  "grid items-center gap-8 border-b border-white/10 pb-16 lg:grid-cols-[140px_1fr_280px]",
-                  i % 2 === 1 && "lg:grid-cols-[280px_140px_1fr]"
-                )}
-              >
-                <p
+          {services.map((s, i) => {
+            const isVideo = i === 0;
+            const hasIcon = Boolean(s.icon);
+            const hasImage = Boolean(s.image);
+
+            return (
+              <Reveal key={s.id} delay={i * 0.08}>
+                <article
                   className={cn(
-                    "font-display text-4xl text-white/30",
-                    i % 2 === 1 && "lg:order-2"
+                    "grid items-center gap-8 border-b border-white/10 pb-16 lg:grid-cols-[140px_1fr_280px]",
+                    i % 2 === 1 && "lg:grid-cols-[280px_140px_1fr]"
                   )}
                 >
-                  {s.id}
-                </p>
-                <div className={cn(i % 2 === 1 && "lg:order-3")}>
-                  <h2 className="font-display text-4xl md:text-5xl">{s.title}</h2>
-                  <p className="mt-4 max-w-xl text-muted">{s.description}</p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {s.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/15 px-3 py-1 text-xs text-white"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  <p
+                    className={cn(
+                      "font-display text-4xl text-white/30",
+                      i % 2 === 1 && "lg:order-2"
+                    )}
+                  >
+                    {s.id}
+                  </p>
+                  <div className={cn(i % 2 === 1 && "lg:order-3")}>
+                    <h2 className="font-display text-4xl md:text-5xl">{s.title}</h2>
+                    <p className="mt-4 max-w-xl text-muted">{s.description}</p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {s.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-white/15 px-3 py-1 text-xs text-white"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div
-                  className={cn(
-                    "w-full max-w-md overflow-hidden rounded-2xl aspect-[4/3]",
-                    i % 2 === 1 && "lg:order-1"
-                  )}
-                >
-                  <PlaceholderImage src={s.image} label={s.title} />
-                </div>
-              </article>
-            </Reveal>
-          ))}
+                  <div
+                    className={cn(
+                      "mx-auto aspect-[4/3] w-full max-w-md overflow-visible",
+                      i % 2 === 1 && "lg:order-1"
+                    )}
+                  >
+                    {isVideo ? (
+                      <motion.img
+                        src={s.icon}
+                        alt=""
+                        aria-hidden="true"
+                        className="mx-auto h-full w-full max-w-[280px] object-contain"
+                        initial={false}
+                        animate={
+                          prefersReducedMotion
+                            ? { y: 0, x: 0, rotate: -6 }
+                            : { y: [0, -6, 0], rotate: -6 }
+                        }
+                        transition={
+                          prefersReducedMotion
+                            ? { duration: 0 }
+                            : {
+                                y: {
+                                  duration: 1.6,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                },
+                              }
+                        }
+                      />
+                    ) : hasIcon ? (
+                      <motion.img
+                        src={s.icon}
+                        alt=""
+                        aria-hidden="true"
+                        className="mx-auto h-full w-full max-w-[280px] object-contain"
+                        initial={false}
+                        animate={
+                          prefersReducedMotion
+                            ? { y: 0, x: 0, rotate: -6 }
+                            : { y: [0, -6, 0], rotate: -6 }
+                        }
+                        transition={
+                          prefersReducedMotion
+                            ? { duration: 0 }
+                            : {
+                                y: {
+                                  duration: 1.6,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                },
+                              }
+                        }
+                      />
+                    ) : hasImage ? (
+                      <PlaceholderImage src={s.image} label={s.title} className="h-full w-full object-contain" />
+                    ) : (
+                      <PlaceholderImage label={s.title} className="h-full w-full" />
+                    )}
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
       </SectionFrame>
       <Footer />

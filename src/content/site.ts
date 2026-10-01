@@ -67,8 +67,8 @@ export const site = {
 
 export const hero = {
   greeting: `Hi, I'm ${site.name}`,
-  subheading: `From ${site.city}, I design fast, user-friendly ${site.product} for founders and teams looking to ${site.outcome}.`,
-  chatCta: "i Want to Chat",
+  subheading: "From landing pages to full websites, I design polished, conversion-focused experiences for founders and teams.",
+  chatCta: "I Want to Chat",
 };
 
 export const socials = [
@@ -188,7 +188,7 @@ export const images = {
         "/images/projects/halos-edge/halos-edge-2.png",
         "/images/projects/halos-edge/halos-edge-3.png",
         "/images/projects/halos-edge/halos-edge-4.png",
-        "",
+        "/images/projects/halos-edge/halos-edge-5.png",
       ],
     },
     {
@@ -225,8 +225,8 @@ export const images = {
       gallery: [
         "/images/projects/strategic-ai/strategic-ai-2.png",
         "/images/projects/strategic-ai/strategic-ai-3.png",
-        "",
-        "",
+        "/images/projects/strategic-ai/strategic-ai-4.jpg",
+        "/images/projects/strategic-ai/strategic-ai-5.png",
       ],
     },
   ],

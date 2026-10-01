@@ -20,7 +20,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],
-        condensed: ["var(--font-condensed)", "sans-serif"],
+        condensed: ["var(--font-display)", "sans-serif"],
       },
       boxShadow: {
         glow: "0 0 24px rgba(255,255,255,0.35)",

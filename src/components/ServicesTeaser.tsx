@@ -26,16 +26,12 @@ export function ServicesTeaser() {
                 title={s.title}
                 subtitle={s.tagline}
                 open={open === i}
-                onToggle={() => setOpen(i)}
+                onToggle={() => setOpen((current) => (current === i ? -1 : i))}
               >
                 {s.description}
               </AccordionItem>
               {open === i ? (
-                <div className="mb-6 aspect-[4/3] w-full overflow-hidden rounded-2xl md:max-w-[220px]">
-                  {s.image ? (
-                    <PlaceholderImage src={s.image} label={s.title} showLabel={false} />
-                  ) : null}
-                </div>
+                <div className="hidden md:block" />
               ) : (
                 <div className="hidden md:block" />
               )}
