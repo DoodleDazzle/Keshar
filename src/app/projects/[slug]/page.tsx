@@ -42,7 +42,7 @@ export default async function ProjectDetailPage({
               {project.subtitle}
             </p>
 
-            <h1 className="max-w-xl break-words font-display text-[clamp(3.5rem,8vw,8rem)] leading-[0.85] tracking-tight text-white">
+            <h1 className="max-w-xl font-display text-[clamp(2.5rem,6vw,6rem)] leading-[0.85] tracking-tight text-white">
               {project.title}
             </h1>
 
